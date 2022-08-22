@@ -1,6 +1,6 @@
 const client = require("./client");
 
-// database functions
+// database functions 
 async function createProduct({ name, description, price, price_type, category, inventory, img_url }) {
     // return the new product
     try {
@@ -9,7 +9,7 @@ async function createProduct({ name, description, price, price_type, category, i
       } = await client.query(
         `INSERT INTO products(name, description, price, price_type, category, inventory, img_url)
          VALUES ($1, $2, $3, $4, $5, $6, $7) 
-         ON CONFLICT (name) DO NOTHING 
+        ON CONFLICT (name) DO NOTHING 
          RETURNING *`,
         [name, description, price, price_type, category, inventory, img_url]
       );
